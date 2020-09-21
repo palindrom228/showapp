@@ -1,0 +1,49 @@
+<div className='Register'>
+        <input type='text' placeholder='Количество играющих'></input>
+        <input type='number' placeholder='Сумма оплаты'></input>
+        <input type='number' placeholder='Предоплата'></input>
+        <select name='Action'>
+            <option value=''>Ведуший</option>
+            <option value='tumen'>Тумэн</option>
+            <option value='nikita'>Никита</option>
+        </select>
+        <select name='Action'>
+            <option value=''>Бальник</option>
+            <option value='tumen'>Тумэн</option>
+            <option value='nikita'>Никита</option>
+            <option value='zhigrider'>Александр</option>
+            <option value='dandar'>Дандар</option>
+            <option value='geser'>Гэсэр</option>
+        </select>
+        <select name='Action'>
+            <option value=''>Звукорежисер</option>
+            <option value='zhigrider'>Александр</option>
+            <option value='geser'>Гэсэр</option>
+        </select>
+        
+        <input type='submit' className='button' value='Начать игру' onClick={function(){
+            document.location = '/Stage1';
+        }}></input>
+        </div>
+        
+
+
+
+
+
+        <div className='PlayGround'>
+           <div className='teamgame'>
+    <p className='nametag'></p>
+                <div className="balls"><p></p></div>
+                <i className="fa fa-plus-circle" aria-hidden="true" onClick={inc}></i>
+           </div>
+            <div className='concursnum'><p>Конкурс №{i}</p></div>
+           <div className='teamgame'>
+    <p className='nametag'></p>
+                <div className="balls"><p></p></div>
+                <i className="fa fa-plus-circle" aria-hidden="true" onClick={inc2}></i>
+           </div>
+           <div className='blockresult'>
+           <input className='nametag'  value='Результат конкурса'></input>
+           </div>
+       </div>
