@@ -4,8 +4,12 @@ const {check, validationResult} = require('express-validator')
 const jwt = require('jsonwebtoken')
 const User = require('../modules/User')
 const Games = require('../modules/Games')
+const Clients = require('../modules/Clients')
 const config = require('config')
 const router = Router()
+const moment = require('moment')
+const { collection } = require('../modules/Games')
+
 
 // /api/auth/register
 router.post('/register',[
@@ -83,43 +87,66 @@ router.post('/creategame', async (req, res) => {
     try{
     
         
-        const{nametag1,nametag2,colpep,pay,prepay,tamada,balman,zvuk,date,week,vyezd,sale} = req.body
-        const admin = '5f57577202b2c1087cc70581'
-        
-        if(nametag1=='' || nametag2==''){
-            res.status(405).json({message: 'заполните названия команд'})
-        }
-        if(balman=='' || zvuk=='' || tamada==''){
-            res.status(405).json({message: 'Заполните поля работников'})
-        }
-        if(colpep==0 || pay==0){
-            res.status(405).json({message: 'Заполните данные по игре'})
-        }
+        const{date,timestart,timeend,name,vyezd,company,companyname,adres,old,povod,Summ,col,month,week,prepay,arenda,status,zakazchik} = req.body
+        const game= new Games({date,timestart,timeend,name,vyezd,company,companyname,adres,old,povod,Summ,col,month,week,prepay,arenda,status,zakazchik})
+        await collection.insertOne(game, function(err,docsInserted){
+            res.status(200).json({message: docsInserted.ops[0]._id})
+        });
 
-        const game= new Games({nametag1, nametag2,colpep,pay,prepay,tamada,balman,zvuk, admin,date,week,vyezd,sale})
-        
-        await game.save()
-        res.status(200).json({message: 'Снова третье сеньтебря'})
     } catch(e){
-        
-        res.status(203).json({message: 'SMTH HAPPEND'})
+        res.status(203).json({message: 'Что-то пошло не так'})
     }
 })
-
 // /api/auth/static
 router.post('/static', async (req, res) => {
     try{
         const userid = req.body.userid
-
-        const bally = await Games.find({balman: userid.userId})
-        const zvuk = await Games.find({zvuk: userid.userId})
-        const tamada = await Games.find({tamada: userid.userId})
+        
         const admin = await Games.find({admin: userid.userId})
-        if (admin.length != 0) {
+        
             res.json(admin)
-        }else{
-            res.json({bally,tamada,zvuk})
-        }
+        
+    } catch(e){
+        
+        res.status(501).json({ message: 'Smth Happend'})
+    }
+})
+// /api/auth/gamesmonth
+router.post('/gamesmonth', async (req, res) => {
+    try{
+        const userid = req.body
+        
+        
+        const admin = await Games.find({month: userid.month})
+        
+            res.json(admin)
+       
+    } catch(e){
+        
+        res.status(501).json({ message: 'Smth Happend'})
+    }
+})
+// /api/auth/thisgame
+router.post('/thisgame', async (req, res) => {
+    try{
+        const gameid = req.body
+        const admin = await Games.findOne({_id: gameid.message})
+        
+            res.json(admin)
+       
+    } catch(e){
+        
+        res.status(501).json({ message: 'Smth Happend'})
+    }
+})
+// /api/auth/addprepay
+router.post('/addprepay', async (req, res) => {
+    try{
+        const id = req.body
+        const admin = await Games.updateOne({_id: id.message}, {$set: {prepay: id.prepay}})
+        
+            res.json(admin)
+       
     } catch(e){
         
         res.status(501).json({ message: 'Smth Happend'})

@@ -9,6 +9,7 @@ import Header from './Header'
 
 
 
+
 function App() {
   const {token, login, logout, userId} = useAuth()
   const isAuthenticated = !!token
@@ -43,7 +44,8 @@ function App() {
     <AuthContext.Provider value={{
       token, login, logout, userId,rabs, isAuthenticated,createName1,nameteam,vyezdy
     }}>
-    <Header></Header>
+    <Header>
+    </Header>
     <Router>
       {routes}
     </Router>

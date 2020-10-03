@@ -6,15 +6,26 @@
 }
 @font-face{
   font-family: Monserat-thin;
-  src: url('/client/src/fonts/Montserrat-Thin.ttf');
+  src: url('./fonts/Montserrat-Thin.ttf');
 }
 @font-face{
   font-family: Monserat-light;
-  src: url('/client/src/fonts/Montserrat-Light.ttf');
+  src: url('./fonts/Montserrat-Light.ttf');
 }
 @font-face{
   font-family: Monserat;
-  src: url('/client/src/fonts/Montserrat-Regular.ttf');
+  src: url('./fonts/Montserrat-Regular.ttf');
+}
+@font-face{
+  font-family: Monserat-SemiBold;
+  src: url('./fonts/Montserrat-SemiBold.ttf');
+}
+@font-face{
+  font-family: Monserat-Extrabold;
+  src: url('./fonts/Montserrat-ExtraBold.ttf');
+}
+* {
+  transition: .5;
 }
 body {
   margin: 0;
@@ -167,4 +178,313 @@ i{
 }
 .fc-col-header  tr{
   height: 3vh;
+}
+
+.table{
+  width: 90vw;
+  height: 85vh;
+  color: black  ;
+  background-color: white;
+  border-radius: 20px;
+  margin: auto;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.table tbody>tr{
+  height: calc((85vh - 92px) / 5);
+  overflow: hidden;
+}
+.sixrow{
+  height: calc((85vh - 92px) / 6)!important;
+  overflow: hidden;
+}
+.fourrow{
+  height: calc((85vh - 92px) / 4)!important;
+  overflow: hidden;
+}
+
+.Navbarcal{
+  width: 100%;
+  line-height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: Monserat-semibold
+}
+.Navbarcal{
+  display: flex;
+  justify-content: space-between;
+}
+.thisday{
+  justify-self: start;
+}
+.thismonth{
+  justify-self: start;
+}
+.navblok{
+  width: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+.navblok a{
+  color: black;
+  padding-top: 10px;
+}
+.minicart{
+  width: 100%;
+  height: calc((85vh - 92px) / 5);
+  overflow-y: scroll;
+}
+.minicart::-webkit-scrollbar {width:0px;}
+.blockrowsix{
+  height: calc((85vh - 92px) / 6);
+}
+.blockrowfour{
+  height: calc((85vh - 92px) / 4);
+}
+.minicart p{
+  margin: 0;
+  padding: 0;
+  font-family: Monserat-SemiBold;
+}
+.minigame {
+  border-radius: 4px;
+  color: white;
+  background-color: #26a69a;
+  font-size: 10px;
+  margin-top: 1px!important;
+}
+.tablew{
+  width: calc((90vw / 7) - 2px);
+    padding: 0 2px;
+  vertical-align: top;
+}
+.clicked {
+  background-color: #e8e8e8;
+  font-family: Monserat-Extrabold;
+}
+.thisdate{
+  background-color: #e8e8e8;
+}
+.weekend{
+  color: #ff3a2c;
+}
+.backform{
+  animation-fill-mode: forwards;    
+  animation-name: backform;  
+  animation-duration: .5s;  
+  -webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
+  -moz-animation-fill-mode: forwards;    /* FF 5+ */
+  -o-animation-fill-mode: forwards;      /* Not implemented yet */
+  -ms-animation-fill-mode: forwards;     /* IE 10+ */
+}
+@keyframes backform{
+  0%{
+    -webkit-transform: translate(0) scale(1);
+    transform: translate(0) scale(1);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: translate(0,-20px) scale(1.07);
+    transform: translate(0,-30px) scale(1.07);
+    opacity: .5;
+  }
+}
+@keyframes daystand{
+  0%{
+    -webkit-transform: translate(0, 100vh) scale(1);
+    transform: translate(0, 100vh) scale(1);
+    opacity: .5;
+  }
+  100%{
+    -webkit-transform: translate(0) scale(1.);
+    transform: translate(0) scale(1);
+    opacity: 1;
+  }
+}
+.daytable{
+  left: 5vw;
+  top: 10%;
+  position: absolute;
+  opacity: 1!important;
+  width: 90vw;
+  height: 85vh;
+  color: black  ;
+  background-color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  overflow: scroll;
+  z-index: 1;
+  animation-name: daystand;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
+  -moz-animation-fill-mode: forwards;    /* FF 5+ */
+  -o-animation-fill-mode: forwards;      /* Not implemented yet */
+  -ms-animation-fill-mode: forwards;     /* IE 10+ */
+}
+.enddayform{
+  animation-fill-mode: forwards;    
+  animation-name: dayback;  
+  animation-duration: .5s;  
+  -webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
+  -moz-animation-fill-mode: forwards;    /* FF 5+ */
+  -o-animation-fill-mode: forwards;      /* Not implemented yet */
+  -ms-animation-fill-mode: forwards; 
+}
+.forwardtab{
+  animation-fill-mode: forwards;    
+  animation-name: forwartab;  
+  animation-duration: .5s;  
+  -webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
+  -moz-animation-fill-mode: forwards;    /* FF 5+ */
+  -o-animation-fill-mode: forwards;      /* Not implemented yet */
+  -ms-animation-fill-mode: forwards; 
+}
+@keyframes forwartab{
+  0%{
+    -webkit-transform: translate(0,-20px) scale(1.07);
+    transform: translate(0,-30px) scale(1.07);
+    opacity: .5;
+  }
+  100%{
+    -webkit-transform: translate(0) scale(1);
+    transform: translate(0) scale(1);
+    opacity: 1;
+  }
+  
+}
+@keyframes dayback{
+  0%{
+    -webkit-transform: translate(0) scale(1);
+    transform: translate(0) scale(1);
+    opacity: 1;
+  }
+  100%{
+    -webkit-transform: translate(0, 100vh) scale(1);
+    transform: translate(0, 100vh) scale(1);
+    opacity: 0;
+  }
+}
+.NavDay{
+  width: 100%;
+  line-height: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-family: Monserat-semibold;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.NavDay a {
+  color: black;
+  font-size: 20px;
+  padding-top: 15px;
+}
+.gamemin {
+  margin-bottom: 0;
+  border-bottom: 1px solid #e8e8e8;
+  font-family: Monserat-SemiBold;
+}
+.gamemin:hover {
+  transform: scale(1.05);
+  transition: .5s;
+}
+.unprepayed {
+  background-color: yellow;
+}
+.prepayed {
+  background-color: yellowgreen;
+}
+.statuspassed{
+  background-color: #4e4e4e;
+  color: white;
+}
+.status p {
+  font-size: 10px;
+  line-height: 22px;
+}
+.status {
+  height: 42px;
+  text-align: center;
+  padding: 0!important;
+}
+.vyezd {
+  background-color: rgb(43, 178, 223)!important;
+}
+.titlemin{
+  background-color: #26a69a;
+  color: white;
+  text-align: center;
+}
+.timegamemin{
+  text-align: center;
+}
+.writegame{
+  background-color: rgba(0, 0, 0, 0.8);
+  animation-name: daystand;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards; /* Chrome 16+, Safari 4+ */
+  -moz-animation-fill-mode: forwards;    /* FF 5+ */
+  -o-animation-fill-mode: forwards;      /* Not implemented yet */
+  -ms-animation-fill-mode: forwards;     /* IE 10+ */
+}
+.writegame option {
+  color: white;
+}
+.select-wrapper .caret{
+  fill: white;
+}
+.select-dropdowncontent {
+  color: white;
+}
+.select-dropdown{
+  color: white;
+}
+.dropdown-content{
+  background-color: white;
+}
+.namegame{
+  background-color: green;
+  padding: 10px;
+  text-align: center;
+}
+.homegame {
+  background-color: #27afa2d7;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  color: #e8e8e8;
+  font-family: Monserat-Bold;
+  text-align: center;
+}
+.outgame {
+  background-color: rgb(0 178 255 / 90%);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  color: #e8e8e8;
+  font-family: Monserat-Bold;
+  text-align: center;
+}
+.gameinformation {
+  color: black;
+  float: left;
+  font-size: 18px;
+  text-align: left;
+  width: 100%;
+}
+.gameinformation > .mainli {
+  margin-top: 5px;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: Monserat;
+  background-color: white;
+}
+.addprepayvyezd {
+  width: 100%;
+  background-color: rgb(43, 178, 223);
+}
+.addprepayhome {
+  width: 100%;
+  background-color: #27afa2d7;
 }
